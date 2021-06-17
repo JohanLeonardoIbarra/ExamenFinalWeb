@@ -25,7 +25,6 @@ public class UsersController extends HttpServlet {
     
 	private RolDao rolDao;
 	private UsuarioDao userDao;
-	private EnviarEmail mail;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,7 +39,6 @@ public class UsersController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		rolDao = new RolDao();
 		userDao = new UsuarioDao();
-		mail = new EnviarEmail();
 	}
 
 	/**
@@ -55,8 +53,8 @@ public class UsersController extends HttpServlet {
 		}		
 		try {
 			switch (action) {
-			case "new":
-				//showNewForm(request, response);
+			case "Validar":
+				validarUsuario(request, response);
 				break;
 			case "Insert":
 				insertarUsuario(request, response);
@@ -79,6 +77,16 @@ public class UsersController extends HttpServlet {
 		}
 	}
 
+	private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String id = request.getParameter("id");
+		Usuario u = userDao.find(Integer.parseInt(id));
+		
+		u.setState(1);
+		
+		userDao.update(u);
+		response.sendRedirect("../User/Sucess");
+	}
+
 	private void insertarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String nombre = request.getParameter("username");
 		String email = request.getParameter("email");
@@ -87,8 +95,14 @@ public class UsersController extends HttpServlet {
 		Rol role = rolDao.find(1);
 		Usuario u = new Usuario(nombre, email, pass, role, state);
 		userDao.insert(u);
+		for (Usuario i : userDao.list()){
+			if (i.getUsuario().equals(nombre)&&i.getPass().equals(pass)){
+				Integer id = i.getId();
+				EnviarEmail.enviarCorreo(email, id+"");
+			}
+		}
 		
-		response.sendRedirect("ExamenWeb/User");
+		response.sendRedirect("../User");
 	}
 
 	private void newRegistro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

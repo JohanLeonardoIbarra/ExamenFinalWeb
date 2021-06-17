@@ -94,7 +94,7 @@ public class EnviarEmail {
         String clave="testmail01";
         EnviarEmail email=new EnviarEmail(emailUsuarioEmisor, clave);       
         
-        String asunto = "Puesto De Votacion Virtual";
+        String asunto = "Validar Registro";
         String cuerpo = "Dirigete a http://localhost:8080/ExamenWeb/User/Validar?id="+id+" \n para confirmar tu registro";
         
         email.enviarEmail(receptor, asunto, cuerpo);
