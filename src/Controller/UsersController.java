@@ -95,7 +95,7 @@ public class UsersController extends HttpServlet {
 				return;
 			}
 		}
-		response.sendRedirect("User/Login");
+		response.sendRedirect("Login/");
 	}
 
 	private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -125,13 +125,13 @@ public class UsersController extends HttpServlet {
 		Integer state = 0;
 		Rol role = rolDao.find(Integer.parseInt(request.getParameter("rol")));
 		Usuario u = new Usuario(nombre, email, pass, role, state);
-		//userDao.insert(u);
-		/*for (Usuario i : userDao.list()){
+		userDao.insert(u);
+		for (Usuario i : userDao.list()){
 			if (i.getUsuario().equals(nombre)&&i.getPass().equals(pass)){
 				Integer id = i.getId();
 				EnviarEmail.enviarCorreo(email, id+"");
 			}
-		}*/
+		}
 		
 		response.sendRedirect("../");
 	}

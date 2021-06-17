@@ -44,10 +44,9 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="User/Registro">Registro</a></li>
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="User/Registro/">Registro</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="User/Login">Login</a></li>
-					
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="User/Login/">Login</a></li>					
 				</ul>
 			</div>
 		</div>

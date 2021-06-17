@@ -90,7 +90,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-md-8">
-              <form action="../User/Logear" method="Post" class="bg-white rounded shadow-5-strong p-5">
+              <form action="../Logear" method="Post" class="bg-white rounded shadow-5-strong p-5">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="text" id="form1Example1" name="user" class="form-control" />
