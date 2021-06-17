@@ -90,7 +90,7 @@ public class UsersController extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		for (Usuario i : userDao.list()){
-			if (i.getUsuario().equals(user)&&i.getPass().equals(pass)){
+			if (i.getUsuario().equals(user)&&i.getPass().equals(pass)&&i.getState()==1){
 				response.sendRedirect("Admin/");
 				return;
 			}
