@@ -68,6 +68,9 @@ public class UsersController extends HttpServlet {
 			case "Logear":
 				validarLogin(request, response);
 				break;
+			case "Admin":
+				adminUser(request, response);
+				break;
 			default:
 				index(request, response);
 				break;
@@ -75,6 +78,11 @@ public class UsersController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void adminUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Admin.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void validarLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
