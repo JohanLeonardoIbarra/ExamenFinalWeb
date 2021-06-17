@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity (name = "rol")
 @Table (name = "rol")
 public class Rol {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@Column (name = "descripcion", nullable = false, length = 100)
-	private String descripcion;
+	@Column (name = "description", nullable = false, length = 100)
+	private String description;
 }

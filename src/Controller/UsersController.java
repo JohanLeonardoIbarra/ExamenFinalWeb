@@ -123,20 +123,22 @@ public class UsersController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		Integer state = 0;
-		Rol role = rolDao.find(1);
+		Rol role = rolDao.find(Integer.parseInt(request.getParameter("rol")));
 		Usuario u = new Usuario(nombre, email, pass, role, state);
-		userDao.insert(u);
-		for (Usuario i : userDao.list()){
+		//userDao.insert(u);
+		/*for (Usuario i : userDao.list()){
 			if (i.getUsuario().equals(nombre)&&i.getPass().equals(pass)){
 				Integer id = i.getId();
 				EnviarEmail.enviarCorreo(email, id+"");
 			}
-		}
+		}*/
 		
-		response.sendRedirect("../User");
+		response.sendRedirect("../");
 	}
 
 	private void newRegistro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		request.setAttribute("roles", rolDao.list());
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/Registro.jsp");
 		dispatcher.forward(request, response);
 	}
