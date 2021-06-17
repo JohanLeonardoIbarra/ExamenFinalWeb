@@ -91,6 +91,10 @@ public class UsersController extends HttpServlet {
 		
 		for (Usuario i : userDao.list()){
 			if (i.getUsuario().equals(user)&&i.getPass().equals(pass)&&i.getState()==1){
+				if(i.getRole()!=null && i.getRole().getId()==2){
+					response.sendRedirect("Admin?role=master/");
+					return;
+				}
 				response.sendRedirect("Admin/");
 				return;
 			}
