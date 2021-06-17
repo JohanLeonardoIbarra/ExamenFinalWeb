@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity (name = "usuario")
-@Table (name = "candidato")
+@Table (name = "usuario")
 public class Usuario{
 	@Id
 	@GeneratedValue
@@ -28,8 +28,18 @@ public class Usuario{
 	@Column (name = "pass", nullable = false, length = 50)
 	private String pass;
 	@ManyToOne
-	@JoinColumn (name = "role")
+	@JoinColumn (name = "rol")
 	private Rol role;
 	@Column (name = "state", nullable = false)
 	private Integer state;
+	public Usuario(String usuario, String email, String pass, Rol role, Integer state) {
+		super();
+		this.usuario = usuario;
+		this.email = email;
+		this.pass = pass;
+		this.role = role;
+		this.state = state;
+	}
+	
+	
 }

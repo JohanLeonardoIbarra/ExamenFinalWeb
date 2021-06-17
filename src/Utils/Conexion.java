@@ -1,5 +1,6 @@
 package Utils;
 
+import java.sql.ResultSet;
 import java.util.*;
 import javax.persistence.*;
 
@@ -35,8 +36,6 @@ public class Conexion <T> {
 	}
 	
 	public List<T> list(){
-		//TypedQuery<T> consulta= em.createNamedQuery(c.getSimpleName().toLowerCase()+".findAll", c);
-		//List<T> lista = (List<T>) consulta.getResultList();
 		return em.createQuery("from " + c.getSimpleName().toLowerCase(), c).getResultList();
 	}
 	
@@ -78,6 +77,5 @@ public class Conexion <T> {
 		}
 		
 	}
-
 }
 

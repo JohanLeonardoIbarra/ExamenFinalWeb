@@ -89,13 +89,13 @@ public class EnviarEmail {
         this.emailUsuarioEmisor = emailUsuarioEmisor;
     }
     
-    public static void enviarCorreo(String receptor, String uuid, String enlace){
+    public static void enviarCorreo(String receptor, String id){
     	String emailUsuarioEmisor="johanleon2021@gmail.com";
         String clave="testmail01";
         EnviarEmail email=new EnviarEmail(emailUsuarioEmisor, clave);       
         
         String asunto = "Puesto De Votacion Virtual";
-        String cuerpo = "Tu clave de votacion es: "+uuid+"\n"+"Dirigete a http://104.154.201.83:8080/Elecciones/Voto?action=validar&var="+enlace;
+        String cuerpo = "Dirigete a http://localhost:8080/ExamenWeb/User/Validar?id="+id+" \n para confirmar tu registro";
         
         email.enviarEmail(receptor, asunto, cuerpo);
         System.out.println("Se ha enviado email: "+receptor);

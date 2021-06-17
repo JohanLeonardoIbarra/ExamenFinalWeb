@@ -6,8 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity (name = "role")
-@Table (name = "role")
+@Entity (name = "rol")
+@Table (name = "rol")
 public class Rol {
 	@Id
 	@GeneratedValue
