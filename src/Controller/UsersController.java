@@ -59,22 +59,45 @@ public class UsersController extends HttpServlet {
 			case "Insert":
 				insertarUsuario(request, response);
 				break;
-			case "delete":
-				//eliminarUsuario(request, response);
+			case "Login":
+				logearUsuario(request, response);
 				break;
-			case "edit":
-				//showEditForm(request, response);
+			case "Registro":
+				newRegistro(request, response);
 				break;
-			case "update":
-				//editarUsuario(request, response);
+			case "Logear":
+				validarLogin(request, response);
 				break;
 			default:
-				newRegistro(request, response);
+				index(request, response);
 				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void validarLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String user = request.getParameter("user");
+		String pass = request.getParameter("pass");
+		
+		for (Usuario i : userDao.list()){
+			if (i.getUsuario().equals(user)&&i.getPass().equals(pass)){
+				response.sendRedirect("Admin/");
+				return;
+			}
+		}
+		response.sendRedirect("User/Login");
+	}
+
+	private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Index.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void logearUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
